@@ -64,7 +64,8 @@ const projects = [
     image: '/Screenshot 2026-04-20 140117.png',
     fig: 'FIG.07',
     github: 'https://github.com/proxymaster356/Multiplex-AI-Biosensor'
-  },
+  }
+];
 
   function Projects() {
     return (
