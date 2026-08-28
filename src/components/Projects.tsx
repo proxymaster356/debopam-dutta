@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { FiGithub, FiExternalLink, FiLock } from 'react-icons/fi'
 
 const projects = [
   {
@@ -161,16 +161,25 @@ const projects = [
 
                     {/* Links */}
                     <div className="flex items-center gap-6 pt-4">
-                      <a
-                        href={proj.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 font-mono text-xs text-bone hover:text-acid border-b border-borders hover:border-acid pb-1 transition-all duration-200"
-                      >
-                        <FiGithub size={12} />
-                        <span>SOURCE_CODE // REPO</span>
-                        <FiExternalLink size={10} className="opacity-55" />
-                      </a>
+                      {proj.github === 'https://github.com/proxymaster356' ? (
+                        <span
+                          className="inline-flex items-center gap-2 font-mono text-xs text-ash/50 border-b border-borders/50 pb-1 cursor-not-allowed"
+                        >
+                          <FiLock size={12} />
+                          <span>SOURCE_CODE // PRIVATE</span>
+                        </span>
+                      ) : (
+                        <a
+                          href={proj.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 font-mono text-xs text-bone hover:text-acid border-b border-borders hover:border-acid pb-1 transition-all duration-200"
+                        >
+                          <FiGithub size={12} />
+                          <span>SOURCE_CODE // REPO</span>
+                          <FiExternalLink size={10} className="opacity-55" />
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 </div>
