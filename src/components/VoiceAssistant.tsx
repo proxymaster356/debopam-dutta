@@ -96,33 +96,15 @@ export default function VoiceAssistant() {
       const aiText = data.reply;
       setResponse(aiText);
 
-      // Step 2: Get TTS audio from KittenTTS
+      // Step 2: Get TTS audio from native Web Speech API instead of KittenTTS
       setIsSpeaking(true);
-      const ttsRes = await fetch('/api/tts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: aiText })
-      });
-
-      if (!ttsRes.ok) {
-        throw new Error('Failed to generate speech');
-      }
-
-      const audioBlob = await ttsRes.blob();
-      const audioUrl = URL.createObjectURL(audioBlob);
       
-      if (audioRef.current) {
-        audioRef.current.src = audioUrl;
-        audioRef.current.play();
-        audioRef.current.onended = () => {
-          setIsSpeaking(false);
-        };
-      } else {
-        // Fallback if ref isn't available
-        const audio = new Audio(audioUrl);
-        audio.play();
-        audio.onended = () => setIsSpeaking(false);
-      }
+      const utterance = new SpeechSynthesisUtterance(aiText);
+      utterance.onend = () => {
+        setIsSpeaking(false);
+      };
+      
+      window.speechSynthesis.speak(utterance);
 
     } catch (err: any) {
       console.error(err);

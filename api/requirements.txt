@@ -1,3 +1,0 @@
-kittentts==0.8.1
-soundfile
-numpy
