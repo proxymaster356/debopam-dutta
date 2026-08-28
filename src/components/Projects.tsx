@@ -1,24 +1,15 @@
 import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink, FiLock } from 'react-icons/fi'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
-interface Project {
-  title: string
-  desc: string
-  tech: string[]
-  status: string
-  image: string
-  fig: string
-  github?: string
-}
-
-const projects: Project[] = [
+const projects = [
   {
     title: 'WEARABLE AI NAVIGATION ASSISTANT',
     desc: 'Developed a real-time, offline navigation system using YOLOv8 for obstacle detection and Ollama for local scene interpretation. Retrained models on custom datasets representing complex Indian urban environments, improving detection accuracy by 67%. Integrated Gemini API for interactive context and Python TTS for auditory feedback.',
     tech: ['YOLOv8', 'Ollama', 'Google Gemini', 'Python', 'TTS', 'EDGE AI'],
     status: 'FINALIST HST26 IIT MANDI',
     image: '/ChatGPT Image Aug 16, 2026, 12_14_55 AM.png',
-    fig: 'FIG.01'
+    fig: 'FIG.01',
+    github: 'https://github.com/proxymaster356'
   },
   {
     title: 'Smart Dual-Factor Attendance System',
@@ -27,7 +18,7 @@ const projects: Project[] = [
     status: 'COMPLETED',
     image: '/Screenshot 2026-08-16 000533.png',
     fig: 'FIG.02',
-    github: 'https://github.com/proxymaster356/smart-attendance-system'
+    github: 'https://github.com/proxymaster356/smart-attendance-system
   },
   {
     title: 'BACTERIA COLONY COUNTING SYSTEM',
@@ -35,7 +26,8 @@ const projects: Project[] = [
     tech: ['Computer Vision', 'OpenCV', 'Python', 'Image Processing'],
     status: 'COMPLETED LAB DEPLOY',
     image: '/ChatGPT Image Aug 16, 2026, 12_01_17 AM.png',
-    fig: 'FIG.03'
+    fig: 'FIG.03',
+    github: 'https://github.com/proxymaster356'
   },
   {
     title: 'AUTOMATED BACTERIAL IDENTIFICATION & ANTIBIOTIC ANALYZER',
@@ -43,7 +35,8 @@ const projects: Project[] = [
     tech: ['Machine Learning', 'Data Science', 'Python', 'Biostatistics'],
     status: 'IN PROGRESS',
     image: '/828c3381-13fa-4454-821f-15510af9239f.png',
-    fig: 'FIG.04'
+    fig: 'FIG.04',
+    github: 'https://github.com/proxymaster356'
   },
   {
     title: 'ECOREMED AI: BIOREMEDIATION SITE ANALYZER',
@@ -51,7 +44,8 @@ const projects: Project[] = [
     tech: ['CNN', 'Deep Learning', 'XAI', 'Environmental Science'],
     status: 'IN PROGRESS',
     image: '/Screenshot 2026-08-16 085705.png',
-    fig: 'FIG.05'
+    fig: 'FIG.05',
+    github: 'https://github.com/proxymaster356'
   },
   {
     title: 'CROPINTEL: AI-POWERED SMART FARMING ASSISTANT',
@@ -59,7 +53,8 @@ const projects: Project[] = [
     tech: ['Flutter', 'Python', 'FastAPI', 'Flask', 'MongoDB', 'Gemini', 'Ollama'],
     status: 'COMPLETED',
     image: '/BIOINTEL.jpeg',
-    fig: 'FIG.06'
+    fig: 'FIG.06',
+    github: 'https://github.com/proxymaster356'
   },
   {
     title: 'AI-ENABLED MULTIPLEX BIOSENSOR SYSTEM',
@@ -69,134 +64,121 @@ const projects: Project[] = [
     image: '/Screenshot 2026-04-20 140117.png',
     fig: 'FIG.07',
     github: 'https://github.com/proxymaster356/Multiplex-AI-Biosensor'
-  }
-]
+  },
 
-function Projects() {
-  return (
-    <section
-      id="projects"
-      className="px-6 md:px-12 py-24 md:py-32 lg:py-40 border-t border-borders bg-void"
-    >
-      <div className="mx-auto max-w-7xl">
-        {/* Editorial Header */}
-        <div className="grid gap-6 lg:grid-cols-12 items-start mb-24 text-left">
-          <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-acid">
-              [CHAPTER_05 // PORTFOLIO]
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tighter mt-2 text-bone">
-              SELECTED <br />
-              <span className="text-outline">WORKS</span>
-            </h2>
+  function Projects() {
+    return (
+      <section
+        id="projects"
+        className="px-6 md:px-12 py-24 md:py-32 lg:py-40 border-t border-borders bg-void"
+      >
+        <div className="mx-auto max-w-7xl">
+          {/* Editorial Header */}
+          <div className="grid gap-6 lg:grid-cols-12 items-start mb-24 text-left">
+            <div className="lg:col-span-5">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-acid">
+                [CHAPTER_05 // PORTFOLIO]
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tighter mt-2 text-bone">
+                SELECTED <br />
+                <span className="text-outline">WORKS</span>
+              </h2>
+            </div>
+            <p className="lg:col-span-7 text-base font-light text-ash leading-relaxed self-end lg:pl-12">
+              An index of development prototypes combining biological datasets with machine learning models and physical sensor hardware.
+            </p>
           </div>
-          <p className="lg:col-span-7 text-base font-light text-ash leading-relaxed self-end lg:pl-12">
-            An index of development prototypes combining biological datasets with machine learning models and physical sensor hardware.
-          </p>
-        </div>
 
-        {/* Projects List (Alternating Rows) */}
-        <div className="flex flex-col gap-24 md:gap-32">
-          {projects.map((proj, index) => {
-            const isOdd = index % 2 !== 0
+          {/* Projects List (Alternating Rows) */}
+          <div className="flex flex-col gap-24 md:gap-32">
+            {projects.map((proj, index) => {
+              const isOdd = index % 2 !== 0
 
-            return (
-              <div
-                key={proj.title}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
-              >
-                {/* Image Section (Reorder on odd rows) */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                  className={`lg:col-span-5 ${isOdd ? 'lg:order-last' : ''}`}
+              return (
+                <div
+                  key={proj.title}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
                 >
-                  <div className="relative group p-1 border border-borders bg-surface clip-corner">
-                    <div className="overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-[700ms]">
-                      <img
-                        src={proj.image}
-                        alt={proj.title}
-                        className="w-full h-auto object-contain transition-transform duration-[700ms] group-hover:scale-105"
-                      />
+                  {/* Image Section (Reorder on odd rows) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                    className={`lg:col-span-5 ${isOdd ? 'lg:order-last' : ''}`}
+                  >
+                    <div className="relative group p-1 border border-borders bg-surface clip-corner">
+                      <div className="overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-[700ms]">
+                        <img
+                          src={proj.image}
+                          alt={proj.title}
+                          className="w-full h-auto object-contain transition-transform duration-[700ms] group-hover:scale-105"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
 
-                {/* Text Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
-                  className="lg:col-span-7 flex flex-col gap-4 text-left"
-                >
-                  {/* FIG Index and status badges */}
-                  <div className="flex items-center gap-4 font-mono">
-                    <span className="text-acid text-[10px] tracking-[0.2em]">
-                      [{proj.fig}]
-                    </span>
-                    <span className="badge-acid">
-                      {proj.status}
-                    </span>
-                  </div>
-
-                  {/* Project Title */}
-                  <h3 className="font-display text-2xl md:text-3xl font-black uppercase tracking-tight text-bone leading-tight">
-                    {proj.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm font-light text-ash leading-relaxed">
-                    {proj.desc}
-                  </p>
-
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {proj.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="border border-borders px-3 py-1 font-mono text-[11px] text-smoke uppercase tracking-wider bg-surface"
-                      >
-                        {t}
+                  {/* Text Section */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+                    className="lg:col-span-7 flex flex-col gap-4 text-left"
+                  >
+                    {/* FIG Index and status badges */}
+                    <div className="flex items-center gap-4 font-mono">
+                      <span className="text-acid text-[10px] tracking-[0.2em]">
+                        [{proj.fig}]
                       </span>
-                    ))}
-                  </div>
+                      <span className="badge-acid">
+                        {proj.status}
+                      </span>
+                    </div>
 
-                  {/* Links or Private Repo Badge */}
-                  <div className="flex items-center gap-6 pt-4">
-                    {proj.github ? (
+                    {/* Project Title */}
+                    <h3 className="font-display text-2xl md:text-3xl font-black uppercase tracking-tight text-bone leading-tight">
+                      {proj.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm font-light text-ash leading-relaxed">
+                      {proj.desc}
+                    </p>
+
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {proj.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="border border-borders px-3 py-1 font-mono text-[11px] text-smoke uppercase tracking-wider bg-surface"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex items-center gap-6 pt-4">
                       <a
                         href={proj.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 font-mono text-xs text-bone hover:text-acid border-b border-borders hover:border-acid pb-1 transition-all duration-200 group/link"
+                        className="inline-flex items-center gap-2 font-mono text-xs text-bone hover:text-acid border-b border-borders hover:border-acid pb-1 transition-all duration-200"
                       >
-                        <FiGithub size={12} className="text-acid group-hover/link:scale-110 transition-transform" />
+                        <FiGithub size={12} />
                         <span>SOURCE_CODE // REPO</span>
-                        <FiExternalLink size={10} className="opacity-55 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
+                        <FiExternalLink size={10} className="opacity-55" />
                       </a>
-                    ) : (
-                      <div className="inline-flex items-center gap-2.5 font-mono text-xs border border-borders/80 bg-surface/70 px-3 py-1.5 clip-corner">
-                        <FiLock size={12} className="text-acid" />
-                        <span className="text-[11px] uppercase tracking-wider text-smoke">
-                          SOURCE_CODE // <span className="text-acid font-medium">PRIVATE REPO</span>
-                        </span>
-                        <span className="text-[10px] text-ash/60 uppercase tracking-widest pl-1.5 border-l border-borders/80">
-                          RESTRICTED
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              </div>
-            )
-          })}
+                    </div>
+                  </motion.div>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    )
+  }
 
 export default Projects

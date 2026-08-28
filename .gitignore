@@ -26,3 +26,8 @@ dist-ssr
 .vercel
 .env
 .env.*
+*.mp4
+
+.env*
+temp_source_portfolio/
+.agents/

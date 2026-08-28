@@ -20,11 +20,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { message, messages } = req.body;
     
-    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
-    const apiKey = process.env.CLOUDFLARE_API_TOKEN;
+    const apiKey = process.env.GROQ_API_KEY || process.env.OPENROUTER_API_KEY;
     
-    if (!accountId || !apiKey) {
-      throw new Error("Cloudflare credentials missing. Add CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN to your environment variables.");
+    if (!apiKey) {
+      throw new Error("API credentials missing. Add GROQ_API_KEY or OPENROUTER_API_KEY to your environment variables.");
     }
 
     const chatHistory = [
@@ -32,24 +31,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ...(messages || [{ role: 'user', content: message }])
     ];
 
-    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/@cf/meta/llama-3.1-8b-instruct`, {
+    const apiUrl = process.env.GROQ_API_KEY 
+      ? 'https://api.groq.com/openai/v1/chat/completions'
+      : 'https://openrouter.ai/api/v1/chat/completions';
+      
+    const model = process.env.GROQ_API_KEY 
+      ? 'llama-3.1-8b-instant' 
+      : 'meta-llama/llama-3.1-8b-instruct';
+
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        model: model,
         messages: chatHistory,
       })
     });
 
     if (!response.ok) {
       const err = await response.text();
-      throw new Error(`Cloudflare AI Error: ${response.status} ${err}`);
+      throw new Error(`AI API Error: ${response.status} ${err}`);
     }
 
     const data = await response.json();
-    const reply = data.result?.response || "No response generated.";
+    const reply = data.choices?.[0]?.message?.content || "No response generated.";
     
     return res.status(200).json({ reply });
   } catch (error: any) {
