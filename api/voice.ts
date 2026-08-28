@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { KNOWLEDGE_BASE } from './knowledgeBase';
+import { KNOWLEDGE_BASE } from './knowledgeBase.js';
 
 const SYSTEM_PROMPT = `
 You are an interactive, open-source AI voice assistant embedded in Debopam Dutta's portfolio.
@@ -36,8 +36,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       : 'https://openrouter.ai/api/v1/chat/completions';
       
     const model = process.env.GROQ_API_KEY 
-      ? 'llama-3.1-8b-instant' 
-      : 'meta-llama/llama-3.1-8b-instruct';
+      ? 'qwen/qwen3.8-27b' 
+      : 'google/gemini-2.0-flash-exp:free';
 
     const response = await fetch(apiUrl, {
       method: 'POST',

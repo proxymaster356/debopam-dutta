@@ -23,5 +23,5 @@
     /* Explicit Types lookup list */
     "types": []
   },
-  "include": ["src"]
+  "include": ["src", "api"]
 }
