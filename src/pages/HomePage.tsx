@@ -10,7 +10,6 @@ import Projects from '../components/Projects'
 import Publications from '../components/Publications'
 import Research from '../components/Research'
 import Contact from '../components/Contact'
-import VoiceAssistant from '../components/VoiceAssistant'
 
 const sectionIds = [
   'home',
@@ -87,7 +86,6 @@ function HomePage({ setActiveSection }: HomePageProps) {
       <Publications />
       <Research />
       <Contact />
-      <VoiceAssistant />
     </div>
   )
 }

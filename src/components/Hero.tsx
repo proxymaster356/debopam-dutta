@@ -132,7 +132,7 @@ function Hero() {
               PROJECTS_PORTFOLIO
             </button>
             <button
-              onClick={() => window.open('/resume%20cv%20.pdf', '_blank')}
+              onClick={() => window.open('/resume.pdf', '_blank')}
               className="btn-secondary"
             >
               DOWNLOAD_CV.PDF
