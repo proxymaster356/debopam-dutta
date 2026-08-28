@@ -18,7 +18,7 @@ const projects = [
     status: 'COMPLETED',
     image: '/Screenshot 2026-08-16 000533.png',
     fig: 'FIG.02',
-    github: 'https://github.com/proxymaster356/smart-attendance-system
+    github: 'https://github.com/proxymaster356/smart-attendance-system'
   },
   {
     title: 'BACTERIA COLONY COUNTING SYSTEM',
